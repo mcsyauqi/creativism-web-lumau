@@ -16,27 +16,54 @@ const Navbar = () => {
   const isActive = (path) => location.pathname === path;
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white shadow-lg">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16 md:h-20">
+    <nav
+      className="fixed top-0 left-0 right-0 z-50"
+      style={{
+        backgroundColor: 'white',
+        boxShadow: '0 2px 10px rgba(0,0,0,0.1)'
+      }}
+    >
+      <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 1rem' }}>
+        <div
+          className="flex justify-between items-center"
+          style={{ height: '64px' }}
+        >
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
-            <span className="text-3xl md:text-4xl font-heading text-primary tracking-wide hover-shake">
+          <Link to="/" className="flex items-center">
+            <span
+              className="hover-shake"
+              style={{
+                color: '#DC2626',
+                fontFamily: "'Bangers', cursive",
+                fontSize: '1.75rem',
+                letterSpacing: '0.05em'
+              }}
+            >
               LU MAU?
             </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div
+            className="hidden md:flex items-center"
+            style={{ gap: '2rem' }}
+          >
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
-                className={`font-medium transition-colors duration-200 ${
-                  isActive(link.path)
-                    ? 'text-primary font-semibold'
-                    : 'text-accent hover:text-primary'
-                }`}
+                style={{
+                  color: isActive(link.path) ? '#DC2626' : '#1F2937',
+                  fontWeight: isActive(link.path) ? '600' : '500',
+                  fontFamily: "'Poppins', sans-serif",
+                  fontSize: '0.95rem',
+                  textDecoration: 'none',
+                  transition: 'color 0.2s'
+                }}
+                onMouseEnter={(e) => e.target.style.color = '#DC2626'}
+                onMouseLeave={(e) => {
+                  if (!isActive(link.path)) e.target.style.color = '#1F2937';
+                }}
               >
                 {link.name}
               </Link>
@@ -45,7 +72,26 @@ const Navbar = () => {
               href="https://gofood.link/u/lumau"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-primary hover:bg-primary-dark text-white font-semibold px-6 py-2 rounded-full transition-all duration-200 hover:scale-105 shadow-md"
+              style={{
+                backgroundColor: '#DC2626',
+                color: 'white',
+                fontWeight: '600',
+                padding: '0.5rem 1.5rem',
+                borderRadius: '9999px',
+                fontFamily: "'Poppins', sans-serif",
+                fontSize: '0.9rem',
+                boxShadow: '0 4px 6px rgba(220, 38, 38, 0.3)',
+                textDecoration: 'none',
+                transition: 'transform 0.2s, background-color 0.2s'
+              }}
+              onMouseEnter={(e) => {
+                e.target.style.backgroundColor = '#B91C1C';
+                e.target.style.transform = 'scale(1.05)';
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.backgroundColor = '#DC2626';
+                e.target.style.transform = 'scale(1)';
+              }}
             >
               Order Now
             </a>
@@ -55,10 +101,16 @@ const Navbar = () => {
           <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-accent hover:text-primary focus:outline-none p-2"
+              style={{
+                color: '#1F2937',
+                padding: '0.5rem',
+                background: 'none',
+                border: 'none',
+                cursor: 'pointer'
+              }}
             >
               <svg
-                className="h-6 w-6"
+                style={{ width: '24px', height: '24px' }}
                 fill="none"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -78,18 +130,22 @@ const Navbar = () => {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden pb-4">
-            <div className="flex flex-col space-y-3">
+          <div className="md:hidden" style={{ paddingBottom: '1rem' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
               {navLinks.map((link) => (
                 <Link
                   key={link.path}
                   to={link.path}
                   onClick={() => setIsOpen(false)}
-                  className={`px-4 py-2 rounded-lg font-medium transition-colors duration-200 ${
-                    isActive(link.path)
-                      ? 'bg-primary text-white'
-                      : 'text-accent hover:bg-secondary/20'
-                  }`}
+                  style={{
+                    backgroundColor: isActive(link.path) ? '#DC2626' : 'transparent',
+                    color: isActive(link.path) ? 'white' : '#1F2937',
+                    fontWeight: '500',
+                    fontFamily: "'Poppins', sans-serif",
+                    padding: '0.75rem 1rem',
+                    borderRadius: '0.5rem',
+                    textDecoration: 'none'
+                  }}
                 >
                   {link.name}
                 </Link>
@@ -98,7 +154,17 @@ const Navbar = () => {
                 href="https://gofood.link/u/lumau"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mx-4 bg-primary hover:bg-primary-dark text-white font-semibold px-6 py-3 rounded-full text-center transition-all duration-200 shadow-md"
+                style={{
+                  backgroundColor: '#DC2626',
+                  color: 'white',
+                  fontWeight: '600',
+                  padding: '0.75rem 1.5rem',
+                  borderRadius: '9999px',
+                  fontFamily: "'Poppins', sans-serif",
+                  marginTop: '0.5rem',
+                  textAlign: 'center',
+                  textDecoration: 'none'
+                }}
               >
                 Order Now
               </a>

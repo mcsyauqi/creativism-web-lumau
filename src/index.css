@@ -29,40 +29,54 @@ html {
 }
 
 body {
-  font-family: var(--font-body);
-  background-color: var(--color-background);
-  color: var(--color-accent);
+  font-family: 'Poppins', sans-serif;
+  background-color: #FEF9C3;
+  color: #1F2937;
+  line-height: 1.6;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-heading);
-}
-
+h1, h2, h3, h4, h5, h6,
 .font-heading {
-  font-family: var(--font-heading);
+  font-family: 'Bangers', cursive;
+  letter-spacing: 0.05em;
 }
 
-.font-body {
-  font-family: var(--font-body);
-}
+/* Custom utilities */
+.text-primary { color: #DC2626 !important; }
+.text-secondary { color: #FBBF24 !important; }
+.text-accent { color: #1F2937 !important; }
+.text-white { color: #FFFFFF !important; }
+
+.bg-primary { background-color: #DC2626 !important; }
+.bg-primary-dark { background-color: #B91C1C !important; }
+.bg-primary-light { background-color: #EF4444 !important; }
+.bg-secondary { background-color: #FBBF24 !important; }
+.bg-secondary-dark { background-color: #F59E0B !important; }
+.bg-secondary-light { background-color: #FCD34D !important; }
+.bg-accent { background-color: #1F2937 !important; }
+.bg-background { background-color: #FEF9C3 !important; }
+
+.border-primary { border-color: #DC2626 !important; }
+.border-secondary { border-color: #FBBF24 !important; }
+.border-accent { border-color: #1F2937 !important; }
+
+/* Hover states */
+.hover\:bg-primary:hover { background-color: #DC2626 !important; }
+.hover\:bg-primary-dark:hover { background-color: #B91C1C !important; }
+.hover\:bg-secondary:hover { background-color: #FBBF24 !important; }
+.hover\:bg-secondary-light:hover { background-color: #FCD34D !important; }
+.hover\:text-primary:hover { color: #DC2626 !important; }
+.hover\:text-secondary:hover { color: #FBBF24 !important; }
 
 /* Custom animations */
 @keyframes bounce-slow {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
 }
 
 @keyframes pulse-glow {
-  0%, 100% {
-    box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.4);
-  }
-  50% {
-    box-shadow: 0 0 20px 10px rgba(220, 38, 38, 0.2);
-  }
+  0%, 100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.4); }
+  50% { box-shadow: 0 0 20px 10px rgba(220, 38, 38, 0.2); }
 }
 
 @keyframes shake {
@@ -98,7 +112,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Text stroke for bold headings */
 .text-stroke {
-  -webkit-text-stroke: 2px var(--color-accent);
+  -webkit-text-stroke: 2px #1F2937;
   paint-order: stroke fill;
 }
 
@@ -113,16 +127,16 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--color-background);
+  background: #FEF9C3;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-primary);
+  background: #DC2626;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-primary-dark);
+  background: #B91C1C;
 }
 
 /* Badge styles */
@@ -133,19 +147,57 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 0.75rem;
   font-weight: 600;
   text-transform: uppercase;
+  font-family: 'Poppins', sans-serif;
 }
 
 .badge-bestseller {
-  background-color: var(--color-primary);
+  background-color: #DC2626;
   color: white;
 }
 
 .badge-favorite {
-  background-color: var(--color-secondary);
-  color: var(--color-accent);
+  background-color: #FBBF24;
+  color: #1F2937;
 }
 
 .badge-musttry {
-  background-color: var(--color-accent);
+  background-color: #1F2937;
   color: white;
+}
+
+/* Hide scrollbar for category filters */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Card hover effects */
+.card-hover {
+  transition: all 0.3s ease;
+}
+.card-hover:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Container max width */
+.container-custom {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+@media (min-width: 640px) {
+  .container-custom {
+    padding: 0 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-custom {
+    padding: 0 2rem;
+  }
 }
